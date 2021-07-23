@@ -6,7 +6,7 @@ var gamestate;
 var play= 1;
 var end= 0;
 var gameover,gameoverI;
-var score;
+var score=0;
 function preload(){
   
   //train1I= loadImage("train1.png");
@@ -53,19 +53,24 @@ function setup() {
 
   rail.visible = false;
 
-  score=0;
-
+  
  }
 
 function draw() {
   background(220);
    
-   
+  textSize(35);
+  fill("white");
+  text("Score is"+ score,150,30)  
 
   if( gamestate === play){
+    
     score = score + Math.round(getFrameRate()/60);
+    
     robot.x= mouseX
     robot.debug= true;
+    // console.log(score);
+    // console.log(frameCount);
      if(frameCount % 100 === 0){
      
        var trainh=Math.round(random(1,2))
@@ -120,7 +125,7 @@ function draw() {
 if (gamestate === end){
    
   gameend()
-  text("Score is"+ score,200,30)
+  
   
 
 }
